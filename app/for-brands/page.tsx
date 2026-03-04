@@ -1,4 +1,6 @@
 // app/for-brands/page.tsx
+import BrandBriefFormClient from "./BrandBriefFormClient";
+
 export default function ForBrandsPage() {
   return (
     <div className="space-y-12 sm:space-y-16">
@@ -6,6 +8,8 @@ export default function ForBrandsPage() {
       <section className="pt-0 sm:pt-2">
         <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[rgb(var(--surface))] aa-shadow">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-36 sm:h-44 bg-gradient-to-b from-white/15 to-transparent" />
+          <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-[rgb(var(--primary))]/10 blur-3xl" />
+          <div className="pointer-events-none absolute -left-24 -bottom-24 h-64 w-64 rounded-full bg-[rgb(var(--primary-2))]/10 blur-3xl" />
 
           <div className="relative p-5 sm:p-10">
             <div className="flex flex-col gap-5 sm:gap-6">
@@ -53,6 +57,24 @@ export default function ForBrandsPage() {
                 </a>
               </div>
 
+              {/* Trust line (simple, no braggy numbers) */}
+              <div className="flex flex-col gap-2 pt-1 text-xs text-white/55 sm:flex-row sm:items-center sm:gap-4">
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[rgb(var(--primary))]" />
+                  <span>Kiểm duyệt trước đăng: bắt buộc</span>
+                </div>
+                <div className="hidden sm:block h-3 w-px bg-white/10" />
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[rgb(var(--primary))]" />
+                  <span>Tracking KPI theo nhóm nội dung</span>
+                </div>
+                <div className="hidden sm:block h-3 w-px bg-white/10" />
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[rgb(var(--primary))]" />
+                  <span>Bảo mật & lưu trữ tài sản nội dung</span>
+                </div>
+              </div>
+
               {/* Stats */}
               <div className="grid gap-3 sm:gap-4 pt-4 sm:pt-6 sm:grid-cols-3">
                 <Stat label="Kiểm duyệt trước đăng" value="Bắt buộc" />
@@ -61,6 +83,16 @@ export default function ForBrandsPage() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Sticky CTA for mobile */}
+        <div className="sm:hidden fixed bottom-3 left-0 right-0 z-40 px-4">
+          <a
+            href="#brief"
+            className="aa-btn-primary aa-focus w-full text-center aa-shadow"
+          >
+            Gửi Brief Chiến Dịch
+          </a>
         </div>
       </section>
 
@@ -79,6 +111,11 @@ export default function ForBrandsPage() {
             <p className="mt-4 font-medium text-white">
               Alfa Agent không bán “lượt đăng”. Chúng tôi vận hành hệ thống.
             </p>
+
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              <MiniCard title="Đầu ra đồng đều" desc="Template + kiểm duyệt trước quay/đăng." />
+              <MiniCard title="Quyết định bằng dữ liệu" desc="Tracking KPI theo nhóm nội dung." />
+            </div>
           </div>
 
           <div className="aa-surface aa-shadow p-5 sm:p-6">
@@ -118,11 +155,31 @@ export default function ForBrandsPage() {
         </p>
 
         <div className="mt-6 sm:mt-8 grid gap-3 sm:gap-4 lg:grid-cols-5">
-          <Step n="01" title="Chốt mục tiêu" desc="Xác định KPI chính: awareness / traffic / conversion." />
-          <Step n="02" title="Lọc KOC phù hợp" desc="Chọn theo năng lực & tệp, không chạy theo số lượng." />
-          <Step n="03" title="Duyệt kịch bản" desc="Kiểm duyệt thông điệp & format trước khi quay." />
-          <Step n="04" title="Giám sát & tracking" desc="Theo dõi hiệu suất theo nhóm nội dung theo thời gian." />
-          <Step n="05" title="Báo cáo & tối ưu" desc="Phân tích để tối ưu vòng sau, không chỉ tổng kết." />
+          <Step
+            n="01"
+            title="Chốt mục tiêu"
+            desc="Xác định KPI chính: awareness / traffic / conversion."
+          />
+          <Step
+            n="02"
+            title="Lọc KOC phù hợp"
+            desc="Chọn theo năng lực & tệp, không chạy theo số lượng."
+          />
+          <Step
+            n="03"
+            title="Duyệt kịch bản"
+            desc="Kiểm duyệt thông điệp & format trước khi quay."
+          />
+          <Step
+            n="04"
+            title="Giám sát & tracking"
+            desc="Theo dõi hiệu suất theo nhóm nội dung theo thời gian."
+          />
+          <Step
+            n="05"
+            title="Báo cáo & tối ưu"
+            desc="Phân tích để tối ưu vòng sau, không chỉ tổng kết."
+          />
         </div>
       </section>
 
@@ -220,49 +277,18 @@ export default function ForBrandsPage() {
             </p>
           </div>
 
-          <form
-            name="alfa-agent-brand-brief"
-            method="POST"
-            action="/for-brands/thanks"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            className="mt-6 sm:mt-8 grid gap-4 sm:grid-cols-2"
-          >
-            <input type="hidden" name="form-name" value="alfa-agent-brand-brief" />
-            <p className="hidden">
-              <label>
-                Don’t fill this out: <input name="bot-field" />
-              </label>
-            </p>
+          <div className="mt-6 sm:mt-8">
+            <BrandBriefFormClient />
+          </div>
 
-            <Field label="Tên công ty / thương hiệu" name="company" placeholder="VD: Alfa Media" />
-            <Field label="Email liên hệ" name="email" placeholder="email@domain.com" type="email" />
-            <Field label="Sản phẩm / ngành hàng" name="industry" placeholder="VD: Mỹ phẩm / Gia dụng..." />
-            <Field label="Ngân sách dự kiến" name="budget" placeholder="VD: 30–100 triệu" />
-            <Field label="Mục tiêu chiến dịch" name="goal" placeholder="Awareness / Traffic / Conversion" />
-            <Field label="Thời gian dự kiến triển khai" name="timeline" placeholder="VD: 2 tuần / 1 tháng" />
-
-            <div className="sm:col-span-2">
-              <label className="text-sm font-medium text-white">Ghi chú thêm</label>
-              <textarea
-                className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/40 aa-focus"
-                rows={5}
-                placeholder="Thông điệp chính, tệp khách hàng, kênh đang chạy, yêu cầu đặc biệt..."
-                name="note"
-              />
-            </div>
-
-            <div className="sm:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-2">
-              <p className="text-xs text-white/55">
-                *Gửi form là đồng ý để Alfa Agent liên hệ tư vấn. Không spam.
-              </p>
-              <button type="submit" className="aa-btn-primary aa-focus w-full sm:w-auto">
-                Gửi Brief
-              </button>
-            </div>
-          </form>
+          <div className="mt-4 text-xs text-white/50">
+            *Gửi form là đồng ý để Alfa Agent liên hệ tư vấn. Không spam.
+          </div>
         </div>
       </section>
+
+      {/* Bottom spacer to avoid mobile sticky overlap */}
+      <div className="h-16 sm:hidden" />
     </div>
   );
 }
@@ -270,7 +296,9 @@ export default function ForBrandsPage() {
 /* ---------- small UI blocks ---------- */
 
 function Dot() {
-  return <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[rgb(var(--primary))]" />;
+  return (
+    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[rgb(var(--primary))]" />
+  );
 }
 
 function Stat({ label, value }: { label: string; value: string }) {
@@ -298,6 +326,15 @@ function Card({ title, desc }: { title: string; desc: string }) {
   return (
     <div className="aa-surface p-6">
       <div className="font-semibold text-white">{title}</div>
+      <div className="mt-2 text-sm aa-muted leading-relaxed">{desc}</div>
+    </div>
+  );
+}
+
+function MiniCard({ title, desc }: { title: string; desc: string }) {
+  return (
+    <div className="aa-surface p-5">
+      <div className="text-sm font-semibold text-white">{title}</div>
       <div className="mt-2 text-sm aa-muted leading-relaxed">{desc}</div>
     </div>
   );
@@ -347,30 +384,6 @@ function Timeline({ title, items }: { title: string; items: string[] }) {
           </li>
         ))}
       </ul>
-    </div>
-  );
-}
-
-function Field({
-  label,
-  name,
-  placeholder,
-  type = "text",
-}: {
-  label: string;
-  name: string;
-  placeholder: string;
-  type?: string;
-}) {
-  return (
-    <div>
-      <label className="text-sm font-medium text-white">{label}</label>
-      <input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/40 aa-focus"
-      />
     </div>
   );
 }

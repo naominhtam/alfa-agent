@@ -32,7 +32,7 @@ export default function HomePage() {
                 để tạo và giữ dòng tiền.
               </h1>
 
-              {/* Sub-brand line (premium, rõ “product”) */}
+              {/* Sub-brand line */}
               <p className="mt-3 text-sm sm:text-base text-white/70">
                 System-first KOC operation platform • SOP • Approval • KPI Tracking
               </p>
@@ -68,21 +68,9 @@ export default function HomePage() {
 
             {/* Proof blocks */}
             <div className="mt-7 sm:mt-10 grid gap-3 sm:gap-4 sm:grid-cols-3">
-              <Stat
-                label="SOP vận hành"
-                value="Chuẩn hoá"
-                note="Không chạy theo cảm hứng."
-              />
-              <Stat
-                label="Kiểm duyệt nội dung"
-                value="Bắt buộc"
-                note="Không duyệt = không đăng."
-              />
-              <Stat
-                label="KPI tracking"
-                value="Tập trung"
-                note="Ra quyết định bằng dữ liệu."
-              />
+              <Stat label="SOP vận hành" value="Chuẩn hoá" note="Không chạy theo cảm hứng." />
+              <Stat label="Kiểm duyệt nội dung" value="Bắt buộc" note="Không duyệt = không đăng." />
+              <Stat label="KPI tracking" value="Tập trung" note="Ra quyết định bằng dữ liệu." />
             </div>
           </div>
         </div>
@@ -125,12 +113,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SYSTEM MODULES (product feel) */}
+      {/* SYSTEM MODULES */}
       <section className="aa-surface aa-shadow p-6 sm:p-8">
         <div className="flex flex-col gap-2">
-          <h2 className="text-2xl font-semibold tracking-tight">
-            System Modules
-          </h2>
+          <h2 className="text-2xl font-semibold tracking-tight">System Modules</h2>
           <p className="max-w-3xl aa-muted leading-relaxed">
             Alfa Agent là một “hệ vận hành”. Mỗi chiến dịch/KOC chạy trong module rõ ràng,
             để scale mà không đánh đổi chất lượng.
@@ -138,30 +124,12 @@ export default function HomePage() {
         </div>
 
         <div className="mt-6 grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <Module
-            title="Content SOP"
-            desc="Chuẩn hoá format theo nền tảng, tránh lệch định vị."
-          />
-          <Module
-            title="KOC Vetting"
-            desc="Chọn theo năng lực & tệp, không chạy theo số lượng."
-          />
-          <Module
-            title="Script Approval"
-            desc="Duyệt thông điệp & cấu trúc trước quay, giảm rủi ro."
-          />
-          <Module
-            title="Publishing Control"
-            desc="Quy trình đăng & checklist tuân thủ, không “thả trôi”."
-          />
-          <Module
-            title="KPI Tracking"
-            desc="Theo dõi tập trung theo nhóm nội dung, ra quyết định nhanh."
-          />
-          <Module
-            title="Reporting Loop"
-            desc="Báo cáo + bài học + cải tiến SOP để vòng sau mạnh hơn."
-          />
+          <Module title="Content SOP" desc="Chuẩn hoá format theo nền tảng, tránh lệch định vị." />
+          <Module title="KOC Vetting" desc="Chọn theo năng lực & tệp, không chạy theo số lượng." />
+          <Module title="Script Approval" desc="Duyệt thông điệp & cấu trúc trước quay, giảm rủi ro." />
+          <Module title="Publishing Control" desc="Quy trình đăng & checklist tuân thủ, không “thả trôi”." />
+          <Module title="KPI Tracking" desc="Theo dõi tập trung theo nhóm nội dung, ra quyết định nhanh." />
+          <Module title="Reporting Loop" desc="Báo cáo + cải tiến SOP để vòng sau mạnh hơn." />
         </div>
       </section>
 
@@ -178,26 +146,10 @@ export default function HomePage() {
         </div>
 
         <div className="mt-6 grid gap-3 sm:gap-4 lg:grid-cols-4">
-          <Step
-            n="01"
-            title="Định mục tiêu"
-            desc="Chốt KPI ngay từ đầu: awareness / traffic / conversion."
-          />
-          <Step
-            n="02"
-            title="Chuẩn hoá sản xuất"
-            desc="Template + guideline + kiểm duyệt trước đăng."
-          />
-          <Step
-            n="03"
-            title="Vận hành & tracking"
-            desc="Theo dõi theo nhóm nội dung, ra quyết định bằng dữ liệu."
-          />
-          <Step
-            n="04"
-            title="Tối ưu vòng lặp"
-            desc="Báo cáo + cải thiện SOP để vòng sau mạnh hơn vòng trước."
-          />
+          <Step n="01" title="Định mục tiêu" desc="Chốt KPI ngay từ đầu: awareness / traffic / conversion." />
+          <Step n="02" title="Chuẩn hoá sản xuất" desc="Template + guideline + kiểm duyệt trước đăng." />
+          <Step n="03" title="Vận hành & tracking" desc="Theo dõi theo nhóm nội dung, ra quyết định bằng dữ liệu." />
+          <Step n="04" title="Tối ưu vòng lặp" desc="Báo cáo + cải thiện SOP để vòng sau mạnh hơn vòng trước." />
         </div>
       </section>
 
@@ -231,16 +183,10 @@ export default function HomePage() {
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <a
-              href="/for-brands"
-              className="aa-btn-primary aa-focus w-full sm:w-auto text-center"
-            >
+            <a href="/for-brands" className="aa-btn-primary aa-focus w-full sm:w-auto text-center">
               For Brands
             </a>
-            <a
-              href="/join-koc"
-              className="aa-btn-outline aa-focus w-full sm:w-auto text-center"
-            >
+            <a href="/join-koc" className="aa-btn-outline aa-focus w-full sm:w-auto text-center">
               Join KOC
             </a>
           </div>
@@ -252,21 +198,11 @@ export default function HomePage() {
 
 /* ---------- UI blocks ---------- */
 
-function Stat({
-  label,
-  value,
-  note,
-}: {
-  label: string;
-  value: string;
-  note: string;
-}) {
+function Stat({ label, value, note }: { label: string; value: string; note: string }) {
   return (
     <div className="aa-surface p-5 sm:p-6">
       <div className="text-xs text-white/55">{label}</div>
-      <div className="mt-2 text-lg font-semibold tracking-tight text-white">
-        {value}
-      </div>
+      <div className="mt-2 text-lg font-semibold tracking-tight text-white">{value}</div>
       <div className="mt-2 text-sm aa-muted leading-relaxed">{note}</div>
     </div>
   );
@@ -308,27 +244,18 @@ function EntryCard({
   cta: string;
 }) {
   return (
-    <a
-      href={href}
-      className="group aa-surface aa-shadow aa-surface-hover p-6 transition"
-    >
+    <a href={href} className="group aa-surface aa-shadow aa-surface-hover p-6 transition">
       <div className="flex items-center justify-between">
         <span className="text-xs text-white/55">{badge}</span>
-        <span className="text-xs text-white/25 group-hover:text-white/60 transition">
-          →
-        </span>
+        <span className="text-xs text-white/25 group-hover:text-white/60 transition">→</span>
       </div>
 
-      <div className="mt-3 text-lg font-semibold tracking-tight text-white">
-        {title}
-      </div>
+      <div className="mt-3 text-lg font-semibold tracking-tight text-white">{title}</div>
       <p className="mt-3 text-sm aa-muted leading-relaxed">{desc}</p>
 
       <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[rgb(var(--primary-2))]">
         {cta}
-        <span className="text-white/25 group-hover:text-[rgb(var(--primary-2))] transition">
-          →
-        </span>
+        <span className="text-white/25 group-hover:text-[rgb(var(--primary-2))] transition">→</span>
       </div>
     </a>
   );
