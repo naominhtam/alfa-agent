@@ -221,7 +221,7 @@ export default function ForBrandsPage() {
         </div>
       </section>
 
-      {/* FORM */}
+      {/* FORM (Netlify Forms) */}
       <section
         id="brief"
         className="scroll-mt-24 rounded-2xl border border-neutral-200 p-8"
@@ -236,20 +236,54 @@ export default function ForBrandsPage() {
           </p>
         </div>
 
-        {/* NOTE: Server Component - no onClick. We'll wire up Netlify Forms next. */}
-        <form action="#" method="post" className="mt-8 grid gap-4 sm:grid-cols-2">
-          <Field label="Tên công ty / thương hiệu" placeholder="VD: Alfa Media" />
-          <Field label="Email liên hệ" placeholder="email@domain.com" type="email" />
-          <Field label="Sản phẩm / ngành hàng" placeholder="VD: Mỹ phẩm / Gia dụng..." />
-          <Field label="Ngân sách dự kiến" placeholder="VD: 30–100 triệu" />
+        <form
+          name="alfa-agent-brand-brief"
+          method="POST"
+          action="/for-brands/thanks"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          className="mt-8 grid gap-4 sm:grid-cols-2"
+        >
+          {/* Netlify required hidden fields */}
+          <input type="hidden" name="form-name" value="alfa-agent-brand-brief" />
+          <p className="hidden">
+            <label>
+              Don’t fill this out: <input name="bot-field" />
+            </label>
+          </p>
+
+          <Field
+            label="Tên công ty / thương hiệu"
+            name="company"
+            placeholder="VD: Alfa Media"
+          />
+          <Field
+            label="Email liên hệ"
+            name="email"
+            placeholder="email@domain.com"
+            type="email"
+          />
+          <Field
+            label="Sản phẩm / ngành hàng"
+            name="industry"
+            placeholder="VD: Mỹ phẩm / Gia dụng..."
+          />
+          <Field
+            label="Ngân sách dự kiến"
+            name="budget"
+            placeholder="VD: 30–100 triệu"
+          />
           <Field
             label="Mục tiêu chiến dịch"
+            name="goal"
             placeholder="Awareness / Traffic / Conversion"
           />
           <Field
             label="Thời gian dự kiến triển khai"
+            name="timeline"
             placeholder="VD: 2 tuần / 1 tháng"
           />
+
           <div className="sm:col-span-2">
             <label className="text-sm font-medium text-neutral-900">
               Ghi chú thêm
@@ -363,20 +397,15 @@ function Timeline({ title, items }: { title: string; items: string[] }) {
 
 function Field({
   label,
+  name,
   placeholder,
   type = "text",
 }: {
   label: string;
+  name: string;
   placeholder: string;
   type?: string;
 }) {
-  const name = label
-    .toLowerCase()
-    .replaceAll("/", " ")
-    .replaceAll("  ", " ")
-    .trim()
-    .replaceAll(" ", "_");
-
   return (
     <div>
       <label className="text-sm font-medium text-neutral-900">{label}</label>
