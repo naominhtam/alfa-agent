@@ -1,26 +1,146 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------- Alfa Agent: Luxury Navy (Balanced) ---------- */
+:root{
+  color-scheme: dark;
+
+  /* Backgrounds (lighter navy) */
+  --bg: 15 28 48;        /* navy but lighter */
+  --surface: 20 38 64;   /* card navy */
+  --surface-2: 26 46 78; /* hover */
+
+  /* Text */
+  --text: 243 244 246;   /* near white */
+  --muted: 180 190 210;  /* softer slate */
+
+  /* Borders */
+  --border: 40 60 90;
+
+  /* Gold Accent */
+  --primary: 201 168 90;
+  --primary-2: 230 200 130;
+
+  --ring: 230 200 130;
+
+  --shadow-1: 0 1px 2px rgba(0,0,0,.25);
+  --shadow-2: 0 18px 50px rgba(0,0,0,.35);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html, body { height:100%; }
+
+body{
+  background: linear-gradient(
+    180deg,
+    rgb(18 32 54) 0%,
+    rgb(15 28 48) 100%
+  );
+  color: rgb(var(--text));
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* smoothing */
+*{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a{ color: inherit; text-decoration:none; }
+
+/* ---------- Utilities ---------- */
+
+@layer utilities {
+
+  .aa-muted { color: rgb(var(--muted)); }
+
+  .aa-surface{
+    background: rgb(var(--surface));
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 18px;
+  }
+
+  .aa-surface-hover:hover{
+    background: rgb(var(--surface-2));
+  }
+
+  .aa-shadow{
+    box-shadow: var(--shadow-1), var(--shadow-2);
+  }
+
+  .aa-badge{
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: rgb(var(--muted));
+  }
+
+  .aa-primary{
+    color: rgb(var(--primary));
+  }
+
+  .aa-btn-primary{
+    background: linear-gradient(
+      135deg,
+      rgb(var(--primary)) 0%,
+      rgb(var(--primary-2)) 100%
+    );
+    color: rgb(20 30 45);
+    border-radius: 14px;
+    padding: 12px 20px;
+    font-weight: 700;
+  }
+
+  .aa-btn-primary:hover{
+    filter: brightness(1.05);
+  }
+
+  .aa-btn-outline{
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 12px 20px;
+    font-weight: 600;
+    color: rgb(var(--text));
+  }
+
+  .aa-btn-outline:hover{
+    border-color: rgba(var(--primary),0.6);
+  }
+
+  .aa-focus:focus{
+    outline:none;
+    box-shadow: 0 0 0 4px rgba(var(--ring),0.2);
   }
 }
+/* ---------- Heading System ---------- */
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
+}
+
+/* Main hero heading */
+h1 {
+  background: linear-gradient(
+    135deg,
+    rgb(var(--primary-2)) 0%,
+    rgb(var(--primary)) 40%,
+    rgb(255 230 180) 100%
+  );
+
+  /* Standard + WebKit for gradient text */
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Section headings */
+h2 {
+  color: rgb(var(--primary-2));
+}
+
+h3 {
+  color: rgb(var(--primary));
 }
