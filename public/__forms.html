@@ -2,16 +2,40 @@
 <html>
   <head></head>
   <body>
-    <!-- Deploy-time detection only -->
+    <!-- Deploy-time detection only (Netlify Forms) -->
+
+    <!-- 1) Brand brief -->
     <form name="alfa-agent-brand-brief" data-netlify="true" hidden>
       <input type="hidden" name="form-name" value="alfa-agent-brand-brief" />
+      <p>
+        <label>
+          Don’t fill this out: <input name="bot-field" />
+        </label>
+      </p>
+
       <input name="company" type="text" />
       <input name="email" type="email" />
       <input name="industry" type="text" />
       <input name="budget" type="text" />
       <input name="goal" type="text" />
       <input name="timeline" type="text" />
-      <input name="note" type="text" />
+      <textarea name="note"></textarea>
+    </form>
+
+    <!-- 2) Contact -->
+    <form name="alfa-media-contact" data-netlify="true" hidden>
+      <input type="hidden" name="form-name" value="alfa-media-contact" />
+      <p>
+        <label>
+          Don’t fill this out: <input name="bot-field" />
+        </label>
+      </p>
+
+      <input name="name" type="text" />
+      <input name="email" type="email" />
+      <input name="company" type="text" />
+      <input name="subject" type="text" />
+      <textarea name="message"></textarea>
     </form>
   </body>
 </html>

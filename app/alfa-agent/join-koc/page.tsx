@@ -1,13 +1,36 @@
-// app/join-koc/page.tsx
+// app/alfa-agent/join-koc/page.tsx
 import type { Metadata } from "next";
+import KocApplyFormClient from "./KocApplyFormClient";
 
 export const metadata: Metadata = {
   title: "Join KOC",
   description:
-    "Ứng tuyển vào hệ thống Alfa Agent: kỷ luật, template, KPI, lộ trình rõ ràng. Không phù hợp nếu làm theo cảm hứng.",
+    "Gia nhập Alfa Agent với tiêu chuẩn vận hành: kỷ luật, template, kiểm duyệt trước đăng và KPI rõ ràng. Phù hợp nếu bạn muốn làm KOC như một nghề.",
+  alternates: {
+    canonical: "/alfa-agent/join-koc",
+  },
+  openGraph: {
+    title: "Join KOC — Alfa Agent",
+    description:
+      "Talent operating system: Discipline • Template • Approval • KPI. Không làm theo cảm hứng, không tự phát.",
+    url: "/alfa-agent/join-koc",
+    type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Join KOC — Alfa Agent (Product of Alfa Media)",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Join KOC — Alfa Agent",
+    description: "Discipline → Template → Approval → KPI. Join the system.",
+    images: ["/og.png"],
+  },
 };
-
-import KocApplyFormClient from "./KocApplyFormClient";
 
 export default function JoinKOCPage() {
   return (
@@ -44,8 +67,8 @@ export default function JoinKOCPage() {
 
               <p className="max-w-2xl text-[15px] leading-relaxed sm:text-base aa-muted">
                 Alfa Agent không tuyển kiểu “thích thì đăng”. Đây là hệ vận hành:
-                format chuẩn, checklist, duyệt trước đăng, tracking KPI và tối ưu
-                theo vòng lặp. Nếu anh/chị làm theo cảm hứng, trang này không phù hợp.
+                format chuẩn, checklist, duyệt trước đăng, tracking KPI và tối ưu theo
+                vòng lặp. Nếu anh/chị làm theo cảm hứng, trang này không phù hợp.
               </p>
 
               {/* CTA */}
@@ -66,9 +89,21 @@ export default function JoinKOCPage() {
 
               {/* Proof */}
               <div className="grid gap-3 sm:gap-4 pt-4 sm:pt-6 sm:grid-cols-3">
-                <Stat label="Template nội dung" value="Có sẵn" note="Hook/outline/caption." />
-                <Stat label="Kiểm duyệt" value="Bắt buộc" note="Không duyệt = không đăng." />
-                <Stat label="KPI tracking" value="Tập trung" note="Tối ưu theo dữ liệu." />
+                <Stat
+                  label="Template nội dung"
+                  value="Có sẵn"
+                  note="Hook/outline/caption."
+                />
+                <Stat
+                  label="Kiểm duyệt"
+                  value="Bắt buộc"
+                  note="Không duyệt = không đăng."
+                />
+                <Stat
+                  label="KPI tracking"
+                  value="Tập trung"
+                  note="Tối ưu theo dữ liệu."
+                />
               </div>
             </div>
           </div>
@@ -112,14 +147,17 @@ export default function JoinKOCPage() {
       </section>
 
       {/* STANDARDS */}
-      <section id="standards" className="scroll-mt-24 aa-surface aa-shadow p-6 sm:p-8">
+      <section
+        id="standards"
+        className="scroll-mt-24 aa-surface aa-shadow p-6 sm:p-8"
+      >
         <div className="flex flex-col gap-2">
           <h2 className="text-2xl font-semibold tracking-tight">
             Tiêu chuẩn bắt buộc (không có ngoại lệ)
           </h2>
           <p className="max-w-3xl aa-muted leading-relaxed">
-            Mục tiêu là bảo vệ tài khoản, giữ chất lượng, và giúp anh/chị tăng hiệu suất
-            theo dữ liệu. Không chạy theo “đăng nhiều”.
+            Mục tiêu là bảo vệ tài khoản, giữ chất lượng, và giúp anh/chị tăng hiệu
+            suất theo dữ liệu. Không chạy theo “đăng nhiều”.
           </p>
         </div>
 
@@ -154,10 +192,12 @@ export default function JoinKOCPage() {
       {/* KPI */}
       <section className="aa-surface aa-shadow p-6 sm:p-8">
         <div className="flex flex-col gap-2">
-          <h2 className="text-2xl font-semibold tracking-tight">KPI (đơn giản nhưng đủ lực)</h2>
+          <h2 className="text-2xl font-semibold tracking-tight">
+            KPI (đơn giản nhưng đủ lực)
+          </h2>
           <p className="max-w-3xl aa-muted leading-relaxed">
-            KPI không để “bắt lỗi”, KPI để biết phải tối ưu cái gì. Theo dõi theo nhóm nội dung,
-            không đánh giá cảm tính.
+            KPI không để “bắt lỗi”, KPI để biết phải tối ưu cái gì. Theo dõi theo
+            nhóm nội dung, không đánh giá cảm tính.
           </p>
         </div>
 
@@ -206,7 +246,9 @@ export default function JoinKOCPage() {
       <section id="apply" className="scroll-mt-24">
         <div className="aa-surface aa-shadow p-6 sm:p-8">
           <div className="max-w-3xl">
-            <h2 className="text-2xl font-semibold tracking-tight">Ứng tuyển vào hệ KOC</h2>
+            <h2 className="text-2xl font-semibold tracking-tight">
+              Ứng tuyển vào hệ KOC
+            </h2>
             <p className="mt-3 aa-muted leading-relaxed">
               Điền thông tin thật kỹ. Mình ưu tiên người nghiêm túc và có khả năng chạy theo hệ.
             </p>
@@ -250,11 +292,21 @@ export default function JoinKOCPage() {
 
 /* ---------- blocks ---------- */
 
-function Stat({ label, value, note }: { label: string; value: string; note: string }) {
+function Stat({
+  label,
+  value,
+  note,
+}: {
+  label: string;
+  value: string;
+  note: string;
+}) {
   return (
     <div className="aa-surface p-5 sm:p-6">
       <div className="text-xs text-white/55">{label}</div>
-      <div className="mt-2 text-lg font-semibold tracking-tight text-white">{value}</div>
+      <div className="mt-2 text-lg font-semibold tracking-tight text-white">
+        {value}
+      </div>
       <div className="mt-2 text-sm aa-muted leading-relaxed">{note}</div>
     </div>
   );
@@ -279,7 +331,15 @@ function Card({ title, desc }: { title: string; desc: string }) {
   );
 }
 
-function Kpi({ title, value, desc }: { title: string; value: string; desc: string }) {
+function Kpi({
+  title,
+  value,
+  desc,
+}: {
+  title: string;
+  value: string;
+  desc: string;
+}) {
   return (
     <div className="aa-surface p-6">
       <div className="flex items-start justify-between gap-3">

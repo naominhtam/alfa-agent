@@ -1,10 +1,35 @@
-// app/solutions/build-and-run/page.tsx
+// app/alfa-agent/solutions/build-and-run/page.tsx
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://alfamedia.vn"),
   title: "Build & Run",
   description:
-    "Lộ trình 3 tháng: setup định vị, lịch vận hành, template nội dung, scale có kiểm soát với KPI tracking.",
+    "Build & Run là gói vận hành cho doanh nghiệp nhỏ: setup định vị, template nội dung, lịch vận hành, kiểm duyệt và KPI tracking để scale có kiểm soát trong 90 ngày.",
+  alternates: {
+    canonical: "/alfa-agent/solutions/build-and-run",
+  },
+  openGraph: {
+    title: "Build & Run — Alfa Agent",
+    description:
+      "90-day operating system: Setup → Operate → Scale. Không chạy theo cảm hứng. Có SOP, kiểm duyệt và dữ liệu tối ưu.",
+    url: "/alfa-agent/solutions/build-and-run",
+    type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Build & Run — Alfa Agent (Product of Alfa Media)",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Build & Run — Alfa Agent",
+    description: "Setup → Operate → Scale (90 days). Template • Approval • KPI Tracking.",
+    images: ["/og.png"],
+  },
 };
 
 export default function BuildAndRunPage() {
@@ -205,35 +230,17 @@ export default function BuildAndRunPage() {
       {/* PROCESS */}
       <section className="aa-surface aa-shadow p-6 sm:p-8">
         <div className="flex flex-col gap-2">
-          <h2 className="text-2xl font-semibold tracking-tight">
-            Cơ chế vận hành (để không loạn)
-          </h2>
+          <h2 className="text-2xl font-semibold tracking-tight">Cơ chế vận hành (để không loạn)</h2>
           <p className="max-w-3xl aa-muted leading-relaxed">
             4 bước cố định: mục tiêu → chuẩn hoá → chạy → tối ưu. Không có bước “đăng đại”.
           </p>
         </div>
 
         <div className="mt-6 grid gap-3 sm:gap-4 lg:grid-cols-4">
-          <Step
-            n="01"
-            title="Chốt mục tiêu"
-            desc="KPI rõ, chọn đúng cuộc chơi ngay từ đầu."
-          />
-          <Step
-            n="02"
-            title="Chuẩn hoá sản xuất"
-            desc="Template + checklist + approval trước đăng."
-          />
-          <Step
-            n="03"
-            title="Chạy theo cadence"
-            desc="Lịch tuần cố định, team biết phải làm gì."
-          />
-          <Step
-            n="04"
-            title="Tối ưu theo dữ liệu"
-            desc="Giữ cái thắng, loại cái thua. Lặp nhanh."
-          />
+          <Step n="01" title="Chốt mục tiêu" desc="KPI rõ, chọn đúng cuộc chơi ngay từ đầu." />
+          <Step n="02" title="Chuẩn hoá sản xuất" desc="Template + checklist + approval trước đăng." />
+          <Step n="03" title="Chạy theo cadence" desc="Lịch tuần cố định, team biết phải làm gì." />
+          <Step n="04" title="Tối ưu theo dữ liệu" desc="Giữ cái thắng, loại cái thua. Lặp nhanh." />
         </div>
       </section>
 
@@ -271,21 +278,11 @@ export default function BuildAndRunPage() {
 
 /* ---------- UI blocks ---------- */
 
-function Stat({
-  label,
-  value,
-  note,
-}: {
-  label: string;
-  value: string;
-  note: string;
-}) {
+function Stat({ label, value, note }: { label: string; value: string; note: string }) {
   return (
     <div className="aa-surface p-5 sm:p-6">
       <div className="text-xs text-white/55">{label}</div>
-      <div className="mt-2 text-lg font-semibold tracking-tight text-white">
-        {value}
-      </div>
+      <div className="mt-2 text-lg font-semibold tracking-tight text-white">{value}</div>
       <div className="mt-2 text-sm aa-muted leading-relaxed">{note}</div>
     </div>
   );
@@ -380,8 +377,7 @@ function FitCard({
   items: string[];
   tone: "good" | "bad" | "neutral";
 }) {
-  const toneLabel =
-    tone === "good" ? "Fit" : tone === "bad" ? "No-fit" : "Result";
+  const toneLabel = tone === "good" ? "Fit" : tone === "bad" ? "No-fit" : "Result";
 
   return (
     <div className="aa-surface aa-shadow p-6">

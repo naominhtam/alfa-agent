@@ -1,11 +1,36 @@
-// app/for-brands/page.tsx
+// app/alfa-agent/for-brands/page.tsx
 import type { Metadata } from "next";
 import BrandBriefFormClient from "./BrandBriefFormClient";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://alfamedia.vn"),
   title: "For Brands",
   description:
-    "Gửi brief chiến dịch KOC: SOP vận hành, duyệt nội dung bắt buộc, tracking KPI tập trung và reporting loop để tối ưu vòng sau.",
+    "Alfa Agent giúp nhãn hàng triển khai KOC theo SOP: lọc KOC phù hợp, duyệt kịch bản bắt buộc, kiểm soát đăng và tracking KPI tập trung để tối ưu vòng sau.",
+  alternates: {
+    canonical: "/alfa-agent/for-brands",
+  },
+  openGraph: {
+    title: "For Brands — Alfa Agent",
+    description:
+      "KOC vận hành bằng SOP, không booking tự phát. Quality control + KPI tracking + reporting loop để tối ưu bền vững.",
+    url: "/alfa-agent/for-brands",
+    type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "For Brands — Alfa Agent (Product of Alfa Media)",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "For Brands — Alfa Agent",
+    description: "System-first KOC operation: SOP • Approval • KPI Tracking • Reporting Loop.",
+    images: ["/og.png"],
+  },
 };
 
 export default function ForBrandsPage() {
@@ -28,9 +53,7 @@ export default function ForBrandsPage() {
                   <span className="text-white/60">System-first KOC operation</span>
                 </span>
                 <span className="aa-badge">
-                  <span className="text-white/60">
-                    Quality control + KPI tracking
-                  </span>
+                  <span className="text-white/60">Quality control + KPI tracking</span>
                 </span>
               </div>
 
@@ -64,7 +87,7 @@ export default function ForBrandsPage() {
                 </a>
               </div>
 
-              {/* Trust line (simple, no braggy numbers) */}
+              {/* Trust line */}
               <div className="flex flex-col gap-2 pt-1 text-xs text-white/55 sm:flex-row sm:items-center sm:gap-4">
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-[rgb(var(--primary))]" />
@@ -78,7 +101,7 @@ export default function ForBrandsPage() {
                 <div className="hidden sm:block h-3 w-px bg-white/10" />
                 <div className="flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-[rgb(var(--primary))]" />
-                  <span>Bảo mật & lưu trữ tài sản nội dung</span>
+                  <span>Bảo mật &amp; lưu trữ tài sản nội dung</span>
                 </div>
               </div>
 
@@ -86,7 +109,7 @@ export default function ForBrandsPage() {
               <div className="grid gap-3 sm:gap-4 pt-4 sm:pt-6 sm:grid-cols-3">
                 <Stat label="Kiểm duyệt trước đăng" value="Bắt buộc" />
                 <Stat label="Tracking KPI tập trung" value="Có" />
-                <Stat label="Bảo mật & backup" value="Chuẩn hoá" />
+                <Stat label="Bảo mật &amp; backup" value="Chuẩn hoá" />
               </div>
             </div>
           </div>
@@ -94,10 +117,7 @@ export default function ForBrandsPage() {
 
         {/* Sticky CTA for mobile */}
         <div className="sm:hidden fixed bottom-3 left-0 right-0 z-40 px-4">
-          <a
-            href="#brief"
-            className="aa-btn-primary aa-focus w-full text-center aa-shadow"
-          >
+          <a href="#brief" className="aa-btn-primary aa-focus w-full text-center aa-shadow">
             Gửi Brief Chiến Dịch
           </a>
         </div>
@@ -111,9 +131,9 @@ export default function ForBrandsPage() {
               Booking thì dễ. Kiểm soát mới khó.
             </h2>
             <p className="mt-3 aa-muted leading-relaxed">
-              Phần lớn chiến dịch KOC thất bại không phải vì thiếu KOC, mà vì thiếu
-              hệ thống kiểm soát. Nội dung lệch thông điệp, chất lượng không đồng đều,
-              dữ liệu phân tán, vòng sau không tối ưu được.
+              Phần lớn chiến dịch KOC thất bại không phải vì thiếu KOC, mà vì thiếu hệ thống
+              kiểm soát. Nội dung lệch thông điệp, chất lượng không đồng đều, dữ liệu phân
+              tán, vòng sau không tối ưu được.
             </p>
             <p className="mt-4 font-medium text-white">
               Alfa Agent không bán “lượt đăng”. Chúng tôi vận hành hệ thống.
@@ -126,9 +146,7 @@ export default function ForBrandsPage() {
           </div>
 
           <div className="aa-surface aa-shadow p-5 sm:p-6">
-            <h3 className="text-sm font-semibold text-white">
-              4 lỗi phổ biến của thị trường
-            </h3>
+            <h3 className="text-sm font-semibold text-white">4 lỗi phổ biến của thị trường</h3>
             <ul className="mt-4 space-y-3 text-sm text-white/75">
               <li className="flex gap-3">
                 <Dot />
@@ -153,9 +171,7 @@ export default function ForBrandsPage() {
 
       {/* PROCESS */}
       <section id="process" className="scroll-mt-24">
-        <h2 className="text-2xl font-semibold tracking-tight">
-          Quy trình triển khai (không có ngoại lệ)
-        </h2>
+        <h2 className="text-2xl font-semibold tracking-tight">Quy trình triển khai (không có ngoại lệ)</h2>
         <p className="mt-3 max-w-2xl aa-muted leading-relaxed">
           Mỗi chiến dịch đều chạy theo SOP. Mục tiêu là giảm rủi ro, tăng chất lượng,
           và giữ dữ liệu để tối ưu vòng lặp tiếp theo.
@@ -198,18 +214,21 @@ export default function ForBrandsPage() {
               Tiêu chuẩn nội dung (để ngân sách không bị đốt)
             </h2>
             <p className="aa-muted leading-relaxed max-w-3xl">
-              KOC trong hệ thống không “tự do sáng tác”. Họ vận hành theo guideline để
-              đảm bảo chất lượng và hạn chế rủi ro nền tảng.
+              KOC trong hệ thống không “tự do sáng tác”. Họ vận hành theo guideline để đảm bảo
+              chất lượng và hạn chế rủi ro nền tảng.
             </p>
           </div>
 
           <div className="mt-6 grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <Card title="Hook 3 giây đầu" desc="Mở bài rõ vấn đề, đúng đối tượng." />
             <Card title="Thông điệp thống nhất" desc="Không lệch định vị thương hiệu." />
-            <Card title="Format theo nền tảng" desc="Đúng TikTok/Reels/Shorts, tối ưu watch-time." />
+            <Card
+              title="Format theo nền tảng"
+              desc="Đúng TikTok/Reels/Shorts, tối ưu watch-time."
+            />
             <Card title="Kiểm duyệt trước đăng" desc="Không có duyệt = không đăng." />
             <Card title="Tuân thủ chính sách" desc="Giảm rủi ro gỡ video / hạn chế tài khoản." />
-            <Card title="Backup nội dung" desc="Lưu trữ & tái sử dụng tài sản." />
+            <Card title="Backup nội dung" desc="Lưu trữ &amp; tái sử dụng tài sản." />
           </div>
         </div>
       </section>
@@ -245,27 +264,15 @@ export default function ForBrandsPage() {
           <div className="mt-6 grid gap-3 sm:gap-4 lg:grid-cols-3">
             <Timeline
               title="Tuần 1 — Chuẩn bị"
-              items={[
-                "Nhận brief & chốt mục tiêu",
-                "Chọn KOC phù hợp",
-                "Chốt format & guideline",
-              ]}
+              items={["Nhận brief &amp; chốt mục tiêu", "Chọn KOC phù hợp", "Chốt format &amp; guideline"]}
             />
             <Timeline
-              title="Tuần 2–3 — Sản xuất & đăng"
-              items={[
-                "Duyệt kịch bản trước quay",
-                "Sản xuất nội dung theo SOP",
-                "Đăng & theo dõi hiệu suất",
-              ]}
+              title="Tuần 2–3 — Sản xuất &amp; đăng"
+              items={["Duyệt kịch bản trước quay", "Sản xuất nội dung theo SOP", "Đăng &amp; theo dõi hiệu suất"]}
             />
             <Timeline
-              title="Tuần 4 — Báo cáo & tối ưu"
-              items={[
-                "Báo cáo KPI theo nhóm nội dung",
-                "Bài học rút ra",
-                "Kế hoạch tối ưu vòng sau",
-              ]}
+              title="Tuần 4 — Báo cáo &amp; tối ưu"
+              items={["Báo cáo KPI theo nhóm nội dung", "Bài học rút ra", "Kế hoạch tối ưu vòng sau"]}
             />
           </div>
         </div>
@@ -275,12 +282,9 @@ export default function ForBrandsPage() {
       <section id="brief" className="scroll-mt-24">
         <div className="aa-surface aa-shadow p-6 sm:p-8">
           <div className="max-w-3xl">
-            <h2 className="text-2xl font-semibold tracking-tight">
-              Gửi brief. Nhận đề xuất trong 48h.
-            </h2>
+            <h2 className="text-2xl font-semibold tracking-tight">Gửi brief. Nhận đề xuất trong 48h.</h2>
             <p className="mt-3 aa-muted leading-relaxed">
-              Chúng tôi phản hồi bằng kế hoạch cụ thể (KPI, timeline, cơ chế vận hành),
-              không gửi báo giá chung chung.
+              Chúng tôi phản hồi bằng kế hoạch cụ thể (KPI, timeline, cơ chế vận hành), không gửi báo giá chung chung.
             </p>
           </div>
 
@@ -303,18 +307,14 @@ export default function ForBrandsPage() {
 /* ---------- small UI blocks ---------- */
 
 function Dot() {
-  return (
-    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[rgb(var(--primary))]" />
-  );
+  return <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[rgb(var(--primary))]" />;
 }
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="aa-surface p-5 sm:p-6">
       <div className="text-xs text-white/55">{label}</div>
-      <div className="mt-2 text-lg font-semibold tracking-tight text-white">
-        {value}
-      </div>
+      <div className="mt-2 text-lg font-semibold tracking-tight text-white">{value}</div>
     </div>
   );
 }

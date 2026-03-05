@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description:
-    "Điều khoản sử dụng cho Alfa Agent (Product of Alfa Media).",
+  description: "Điều khoản sử dụng cho Alfa Agent (Product of Alfa Media).",
 };
 
 export default function TermsPage() {
@@ -21,8 +20,8 @@ export default function TermsPage() {
         <h2 className="text-xl font-semibold">1. Giới thiệu</h2>
 
         <p className="aa-muted leading-relaxed">
-          Các điều khoản sử dụng này ("Điều khoản") quy định việc truy cập và
-          sử dụng website Alfa Agent – một sản phẩm của Alfa Media.
+          Các điều khoản sử dụng này (&quot;Điều khoản&quot;) quy định việc truy
+          cập và sử dụng website Alfa Agent – một sản phẩm của Alfa Media.
         </p>
 
         <p className="aa-muted">
@@ -35,8 +34,8 @@ export default function TermsPage() {
         <h2 className="text-xl font-semibold">2. Phạm vi dịch vụ</h2>
 
         <p className="aa-muted leading-relaxed">
-          Alfa Agent cung cấp hệ thống vận hành KOC và affiliate marketing,
-          bao gồm:
+          Alfa Agent cung cấp hệ thống vận hành KOC và affiliate marketing, bao
+          gồm:
         </p>
 
         <ul className="list-disc pl-6 space-y-2 text-sm text-white/70">
@@ -84,9 +83,7 @@ export default function TermsPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold">
-          5. Điều khoản đối với KOC
-        </h2>
+        <h2 className="text-xl font-semibold">5. Điều khoản đối với KOC</h2>
 
         <p className="aa-muted">
           Người tham gia hệ thống KOC cần tuân thủ các nguyên tắc sau:
@@ -94,7 +91,10 @@ export default function TermsPage() {
 
         <ul className="list-disc pl-6 space-y-2 text-sm text-white/70">
           <li>Tuân thủ guideline nội dung của chiến dịch</li>
-          <li>Không đăng tải nội dung gây hiểu lầm hoặc vi phạm chính sách nền tảng</li>
+          <li>
+            Không đăng tải nội dung gây hiểu lầm hoặc vi phạm chính sách nền
+            tảng
+          </li>
           <li>Không làm sai lệch thông tin về sản phẩm</li>
           <li>Tuân thủ quy trình kiểm duyệt trước khi đăng nội dung</li>
         </ul>
@@ -106,9 +106,7 @@ export default function TermsPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold">
-          6. Điều khoản đối với nhãn hàng
-        </h2>
+        <h2 className="text-xl font-semibold">6. Điều khoản đối với nhãn hàng</h2>
 
         <p className="aa-muted">
           Nhãn hàng khi sử dụng dịch vụ cần đảm bảo:
@@ -127,9 +125,7 @@ export default function TermsPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold">
-          7. Giới hạn trách nhiệm
-        </h2>
+        <h2 className="text-xl font-semibold">7. Giới hạn trách nhiệm</h2>
 
         <p className="aa-muted leading-relaxed">
           Alfa Agent cung cấp nền tảng và hệ thống vận hành nội dung. Chúng tôi
@@ -144,9 +140,7 @@ export default function TermsPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold">
-          8. Chấm dứt dịch vụ
-        </h2>
+        <h2 className="text-xl font-semibold">8. Chấm dứt dịch vụ</h2>
 
         <p className="aa-muted">
           Alfa Media có quyền tạm ngừng hoặc chấm dứt quyền truy cập của người
@@ -155,9 +149,7 @@ export default function TermsPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold">
-          9. Thay đổi điều khoản
-        </h2>
+        <h2 className="text-xl font-semibold">9. Thay đổi điều khoản</h2>
 
         <p className="aa-muted">
           Chúng tôi có thể cập nhật các điều khoản sử dụng khi cần thiết để phản
@@ -166,9 +158,7 @@ export default function TermsPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold">
-          10. Thông tin liên hệ
-        </h2>
+        <h2 className="text-xl font-semibold">10. Thông tin liên hệ</h2>
 
         <p className="aa-muted">
           Nếu bạn có câu hỏi liên quan đến điều khoản sử dụng, vui lòng liên hệ:
