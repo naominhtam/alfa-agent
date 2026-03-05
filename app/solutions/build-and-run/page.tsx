@@ -1,4 +1,12 @@
 // app/solutions/build-and-run/page.tsx
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Build & Run",
+  description:
+    "Lộ trình 3 tháng: setup định vị, lịch vận hành, template nội dung, scale có kiểm soát với KPI tracking.",
+};
+
 export default function BuildAndRunPage() {
   return (
     <div className="space-y-12 sm:space-y-16">

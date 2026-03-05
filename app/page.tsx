@@ -1,4 +1,12 @@
 // app/page.tsx
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "System-first KOC Operation",
+  description:
+    "Alfa Agent (Product of Alfa Media): SOP • Approval • KPI Tracking • Reporting Loop. Product landing + recruitment funnel.",
+};
+
 export default function HomePage() {
   return (
     <div className="space-y-12 sm:space-y-16">
@@ -32,7 +40,6 @@ export default function HomePage() {
                 để tạo và giữ dòng tiền.
               </h1>
 
-              {/* Sub-brand line */}
               <p className="mt-3 text-sm sm:text-base text-white/70">
                 System-first KOC operation platform • SOP • Approval • KPI Tracking
               </p>
@@ -129,16 +136,14 @@ export default function HomePage() {
           <Module title="Script Approval" desc="Duyệt thông điệp & cấu trúc trước quay, giảm rủi ro." />
           <Module title="Publishing Control" desc="Quy trình đăng & checklist tuân thủ, không “thả trôi”." />
           <Module title="KPI Tracking" desc="Theo dõi tập trung theo nhóm nội dung, ra quyết định nhanh." />
-          <Module title="Reporting Loop" desc="Báo cáo + cải tiến SOP để vòng sau mạnh hơn." />
+          <Module title="Reporting Loop" desc="Báo cáo + bài học + cải tiến SOP để vòng sau mạnh hơn." />
         </div>
       </section>
 
       {/* HOW IT WORKS */}
       <section className="aa-surface aa-shadow p-6 sm:p-8">
         <div className="flex flex-col gap-2">
-          <h2 className="text-2xl font-semibold tracking-tight">
-            Hệ thống vận hành như thế nào?
-          </h2>
+          <h2 className="text-2xl font-semibold tracking-tight">Hệ thống vận hành như thế nào?</h2>
           <p className="max-w-3xl aa-muted leading-relaxed">
             Alfa Agent tập trung vào 3 thứ: giảm rủi ro, tăng chất lượng, và giữ dữ liệu để tối ưu vòng lặp.
             Không “làm cho xong”.

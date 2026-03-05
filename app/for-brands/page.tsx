@@ -1,5 +1,12 @@
 // app/for-brands/page.tsx
+import type { Metadata } from "next";
 import BrandBriefFormClient from "./BrandBriefFormClient";
+
+export const metadata: Metadata = {
+  title: "For Brands",
+  description:
+    "Gửi brief chiến dịch KOC: SOP vận hành, duyệt nội dung bắt buộc, tracking KPI tập trung và reporting loop để tối ưu vòng sau.",
+};
 
 export default function ForBrandsPage() {
   return (

@@ -1,4 +1,12 @@
 // app/join-koc/page.tsx
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Join KOC",
+  description:
+    "Ứng tuyển vào hệ thống Alfa Agent: kỷ luật, template, KPI, lộ trình rõ ràng. Không phù hợp nếu làm theo cảm hứng.",
+};
+
 import KocApplyFormClient from "./KocApplyFormClient";
 
 export default function JoinKOCPage() {

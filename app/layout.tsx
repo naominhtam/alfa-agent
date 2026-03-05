@@ -1,6 +1,6 @@
 // app/layout.tsx
 import "./globals.css";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -12,30 +12,23 @@ const headingFont = Playfair_Display({
   display: "swap",
 });
 
-const SITE_URL = "https://alfamedia.vn";
-const SITE_NAME = "Alfa Agent";
-const DEFAULT_TITLE = "Alfa Agent";
-const DEFAULT_DESC =
-  "Alfa Agent là product của Alfa Media: hệ thống vận hành KOC/Affiliate theo SOP, kiểm duyệt nội dung và tracking KPI để tối ưu vòng lặp.";
+const siteUrl = "https://alfamedia.vn";
+const siteName = "Alfa Agent";
+const defaultTitle = "Alfa Agent";
+const defaultDescription =
+  "Alfa Agent là product của Alfa Media: System-first KOC operation platform (SOP • Approval • KPI Tracking • Reporting Loop).";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-
+  metadataBase: new URL(siteUrl),
+  applicationName: siteName,
   title: {
-    default: DEFAULT_TITLE,
-    template: "%s · Alfa Agent",
+    default: defaultTitle,
+    template: "%s | Alfa Agent",
   },
-  description: DEFAULT_DESC,
-
-  applicationName: SITE_NAME,
-  authors: [{ name: "Alfa Media" }],
-  creator: "Alfa Media",
-  publisher: "Alfa Media",
-
+  description: defaultDescription,
   alternates: {
     canonical: "/",
   },
-
   robots: {
     index: true,
     follow: true,
@@ -47,35 +40,24 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-
   openGraph: {
-    title: DEFAULT_TITLE,
-    description: DEFAULT_DESC,
-    url: SITE_URL,
-    siteName: SITE_NAME,
+    title: defaultTitle,
+    description: defaultDescription,
+    url: siteUrl,
+    siteName,
     locale: "vi_VN",
     type: "website",
-    // CHƯA set image ở đây để tránh share bị xấu nếu chưa có OG chuẩn.
-    // Khi làm SEO/OG toàn site, mình sẽ thêm images: [{ url, width, height, alt }]
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Alfa Agent" }],
   },
-
   twitter: {
     card: "summary_large_image",
-    title: DEFAULT_TITLE,
-    description: DEFAULT_DESC,
-    // Khi có OG image chuẩn, mình sẽ set images luôn ở đây.
+    title: defaultTitle,
+    description: defaultDescription,
+    images: ["/twitter-image"],
   },
-
   icons: {
-    // Ưu tiên PNG logo để tab icon đúng như anh muốn
-    icon: [{ url: "/alfa-agent-logo.png", type: "image/png" }, { url: "/favicon.ico" }],
-    apple: [{ url: "/alfa-agent-logo.png" }],
+    icon: "/favicon.ico",
   },
-};
-
-export const viewport: Viewport = {
-  themeColor: "#0F1C30", // navy tone
-  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -87,9 +69,7 @@ export default function RootLayout({
         <div className="flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">
-            <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-12">
-              {children}
-            </div>
+            <div className="mx-auto max-w-6xl px-6 py-12">{children}</div>
           </main>
           <Footer />
         </div>
