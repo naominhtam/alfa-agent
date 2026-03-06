@@ -99,7 +99,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.facebook.com/alfa_agent"
+                  href="https://www.facebook.com/61587712543254"
                   target="_blank"
                   rel="noreferrer"
                   className="text-white/70 hover:text-white transition"
@@ -109,12 +109,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://www.tiktok.com/alfa_agent"
+                  href="https://www.tiktok.com/@alfa_agent"
                   target="_blank"
                   rel="noreferrer"
                   className="text-white/70 hover:text-white transition"
                 >
-                  YouTube
+                  TikTok
                 </a>
               </li>
             </ul>

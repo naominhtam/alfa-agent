@@ -88,13 +88,13 @@ export default function ContactPage() {
             />
             <Info
               label="Social"
-              value="Facebook / YouTube / TikTok"
-              hint="Để link chính thức vào đây."
+              value="TikTok"
+              hint="https://www.tiktok.com/@alfa_agent"
             />
             <Info
               label="Address"
               value="Vietnam"
-              hint="Cập nhật địa chỉ cụ thể nếu cần."
+              hint="Liên hệ qua email hoặc form. Văn phòng hiện tại ở Việt Nam."
             />
           </div>
 
