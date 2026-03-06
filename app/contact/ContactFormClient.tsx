@@ -8,11 +8,6 @@ export default function ContactFormClient() {
   const [state, setState] = useState<SubmitState>("idle");
   const [errorMsg, setErrorMsg] = useState<string>("");
 
-  // IMPORTANT:
-  // - File static để Netlify scan form nằm trong /public
-  // - Anh đang có tab "_forms.html" => dùng đúng path này
-  const FORMS_STATIC_TARGET = "/_forms.html";
-
   const disabled = state === "submitting";
 
   const buttonLabel = useMemo(() => {
@@ -30,14 +25,12 @@ export default function ContactFormClient() {
       const form = e.currentTarget;
       const formData = new FormData(form);
 
-      // Netlify Forms cần x-www-form-urlencoded
       const body = new URLSearchParams();
       formData.forEach((value, key) => {
-        // FormData value có thể là File | string; ở đây ta chỉ dùng text input/textarea
         body.append(key, String(value));
       });
 
-      const res = await fetch(FORMS_STATIC_TARGET, {
+      const res = await fetch("/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -51,20 +44,24 @@ export default function ContactFormClient() {
 
       setState("success");
       form.reset();
-    } catch (err) {
+    } catch {
       setState("error");
-      setErrorMsg(
-        err instanceof Error
-          ? err.message
-          : "Gửi không thành công. Vui lòng thử lại."
-      );
+      setErrorMsg("Gửi không thành công. Vui lòng thử lại sau ít phút.");
     }
   }
 
   return (
     <div className="mt-6 sm:mt-8">
-      <form onSubmit={onSubmit} className="grid gap-4 sm:grid-cols-2">
-        {/* Netlify needs this exact hidden field */}
+      <form
+        name="alfa-media-contact"
+        method="POST"
+        action="/contact"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        onSubmit={onSubmit}
+        className="grid gap-4 sm:grid-cols-2"
+      >
+        {/* Netlify required */}
         <input type="hidden" name="form-name" value="alfa-media-contact" />
 
         {/* Honeypot */}
@@ -115,8 +112,7 @@ export default function ContactFormClient() {
           />
         </div>
 
-        {/* Status */}
-        <div className="sm:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-2">
+        <div className="sm:col-span-2 flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="text-xs text-white/55">
             {state === "success" ? (
               <span className="text-[rgb(var(--primary-2))]">
@@ -124,7 +120,7 @@ export default function ContactFormClient() {
               </span>
             ) : state === "error" ? (
               <span className="text-red-300">
-                Lỗi: {errorMsg || "Không gửi được. Thử lại giúp anh."}
+                {errorMsg || "Không gửi được. Vui lòng thử lại."}
               </span>
             ) : (
               <span>*Gửi form là đồng ý để Alfa Media liên hệ. Không spam.</span>
@@ -134,7 +130,7 @@ export default function ContactFormClient() {
           <button
             type="submit"
             disabled={disabled}
-            className="aa-btn-primary aa-focus w-full sm:w-auto text-center disabled:opacity-70"
+            className="aa-btn-primary aa-focus w-full text-center disabled:opacity-70 sm:w-auto"
           >
             {buttonLabel}
           </button>

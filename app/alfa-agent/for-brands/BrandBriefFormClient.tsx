@@ -26,7 +26,10 @@ const initialState: FormState = {
 
 function encode(data: Record<string, string>) {
   return Object.keys(data)
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key] ?? "")}`)
+    .map(
+      (key) =>
+        `${encodeURIComponent(key)}=${encodeURIComponent(data[key] ?? "")}`
+    )
     .join("&");
 }
 
@@ -37,7 +40,7 @@ export default function BrandBriefFormClient() {
 
   const canSubmit = useMemo(() => {
     if (status === "submitting") return false;
-    return form.company.trim() && form.email.trim();
+    return Boolean(form.company.trim() && form.email.trim());
   }, [form.company, form.email, status]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -46,22 +49,19 @@ export default function BrandBriefFormClient() {
     setMessage("");
 
     try {
-      // Netlify Forms requires "form-name"
       const payload: Record<string, string> = {
         "form-name": "alfa-agent-brand-brief",
         ...form,
       };
 
-      const res = await fetch("/for-brands", {
+      const res = await fetch("/alfa-agent/for-brands", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: encode(payload),
       });
 
       if (!res.ok) {
-        setStatus("error");
-        setMessage("Gửi thất bại. Anh thử lại giúp em hoặc đổi email khác.");
-        return;
+        throw new Error(`Submit failed: ${res.status}`);
       }
 
       setStatus("success");
@@ -69,7 +69,7 @@ export default function BrandBriefFormClient() {
       setForm(initialState);
     } catch {
       setStatus("error");
-      setMessage("Có lỗi mạng. Anh thử lại giúp em sau 1 phút.");
+      setMessage("Gửi thất bại. Anh thử lại giúp em sau ít phút.");
     }
   }
 
@@ -82,6 +82,7 @@ export default function BrandBriefFormClient() {
       <form
         name="alfa-agent-brand-brief"
         method="POST"
+        action="/alfa-agent/for-brands"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={onSubmit}
@@ -101,6 +102,7 @@ export default function BrandBriefFormClient() {
           value={form.company}
           onChange={(v) => setField("company", v)}
           placeholder="VD: Alfa Media"
+          required
         />
         <Field
           label="Email liên hệ"
@@ -109,6 +111,7 @@ export default function BrandBriefFormClient() {
           value={form.email}
           onChange={(v) => setField("email", v)}
           placeholder="email@domain.com"
+          required
         />
         <Field
           label="Sản phẩm / ngành hàng"
@@ -151,14 +154,15 @@ export default function BrandBriefFormClient() {
           />
         </div>
 
-        <div className="sm:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-2">
+        <div className="sm:col-span-2 flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-white/55">
             *Gửi form là đồng ý để Alfa Agent liên hệ tư vấn. Không spam.
           </p>
+
           <button
             type="submit"
             disabled={!canSubmit}
-            className="aa-btn-primary aa-focus w-full sm:w-auto text-center disabled:opacity-60 disabled:cursor-not-allowed"
+            className="aa-btn-primary aa-focus w-full text-center disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
           >
             {status === "submitting" ? "Đang gửi..." : "Gửi Brief"}
           </button>
@@ -168,8 +172,8 @@ export default function BrandBriefFormClient() {
           <div
             className={`sm:col-span-2 mt-2 rounded-2xl border px-4 py-3 text-sm ${
               status === "success"
-                ? "border-white/10 bg-white/5 text-white"
-                : "border-red-500/30 bg-red-500/10 text-white"
+                ? "border-emerald-400/20 bg-emerald-400/10 text-white"
+                : "border-red-400/20 bg-red-400/10 text-white"
             }`}
           >
             {message}
@@ -187,6 +191,7 @@ function Field({
   type = "text",
   value,
   onChange,
+  required = false,
 }: {
   label: string;
   name: string;
@@ -194,6 +199,7 @@ function Field({
   type?: string;
   value: string;
   onChange: (v: string) => void;
+  required?: boolean;
 }) {
   return (
     <div>
@@ -203,6 +209,7 @@ function Field({
         name={name}
         placeholder={placeholder}
         value={value}
+        required={required}
         onChange={(e) => onChange(e.target.value)}
         className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/40 aa-focus"
       />

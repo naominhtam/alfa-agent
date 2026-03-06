@@ -16,29 +16,29 @@ export default function KocApplyFormClient() {
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    // ✅ No `any` — build x-www-form-urlencoded safely
     const params = new URLSearchParams();
     formData.forEach((value, key) => {
       params.append(key, String(value));
     });
 
     try {
-      const res = await fetch("/join-koc", {
+      const res = await fetch("/alfa-agent/join-koc", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
         body: params.toString(),
       });
 
       if (!res.ok) {
-        throw new Error("Submit failed");
+        throw new Error(`Submit failed: ${res.status}`);
       }
 
       setState("success");
       form.reset();
     } catch {
-      // ✅ no unused var
       setState("error");
-      setErr("Gửi không thành công. Anh/chị thử lại hoặc reload trang.");
+      setErr("Gửi không thành công. Vui lòng thử lại sau hoặc reload trang.");
     }
   }
 
@@ -46,6 +46,7 @@ export default function KocApplyFormClient() {
     <form
       name="alfa-agent-koc-apply"
       method="POST"
+      action="/alfa-agent/join-koc"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="mt-6 sm:mt-8 grid gap-4 sm:grid-cols-2"
@@ -59,29 +60,56 @@ export default function KocApplyFormClient() {
         </label>
       </p>
 
-      <Field label="Họ tên" name="name" placeholder="VD: Nguyễn A" />
-      <Field label="Email" name="email" placeholder="email@domain.com" type="email" />
-      <Field label="Số điện thoại" name="phone" placeholder="VD: 09xxxxxxxx" />
-      <Field label="Kênh chính" name="platform" placeholder="TikTok / Reels / Shorts" />
+      <Field label="Họ tên" name="name" placeholder="VD: Nguyễn A" required />
+      <Field
+        label="Email"
+        name="email"
+        placeholder="email@domain.com"
+        type="email"
+        required
+      />
+      <Field
+        label="Số điện thoại"
+        name="phone"
+        placeholder="VD: 09xxxxxxxx"
+        required
+      />
+      <Field
+        label="Kênh chính"
+        name="platform"
+        placeholder="TikTok / Reels / Shorts"
+        required
+      />
 
       <Field
         label="Link kênh"
         name="channel"
         placeholder="https://tiktok.com/@... hoặc https://youtube.com/@..."
+        required
       />
-      <Field label="Niche/ngành" name="niche" placeholder="Beauty / Gia dụng / Food /..." />
+      <Field
+        label="Niche/ngành"
+        name="niche"
+        placeholder="Beauty / Gia dụng / Food /..."
+        required
+      />
 
       <div className="sm:col-span-2">
-        <label className="text-sm font-medium text-white">Số follower (ước lượng)</label>
+        <label className="text-sm font-medium text-white">
+          Số follower (ước lượng)
+        </label>
         <input
           name="followers"
           placeholder="VD: 10k / 50k / 200k..."
+          required
           className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/40 aa-focus"
         />
       </div>
 
       <div className="sm:col-span-2">
-        <label className="text-sm font-medium text-white">Cam kết cadence (lịch đăng)</label>
+        <label className="text-sm font-medium text-white">
+          Cam kết cadence (lịch đăng)
+        </label>
         <select
           name="cadence"
           className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none aa-focus"
@@ -106,14 +134,14 @@ export default function KocApplyFormClient() {
         />
       </div>
 
-      <div className="sm:col-span-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-2">
+      <div className="sm:col-span-2 flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-white/55">
           *Gửi form là đồng ý để Alfa Agent liên hệ. Không spam.
         </p>
 
         <button
           type="submit"
-          className="aa-btn-primary aa-focus w-full sm:w-auto text-center"
+          className="aa-btn-primary aa-focus w-full text-center sm:w-auto disabled:cursor-not-allowed disabled:opacity-70"
           disabled={state === "submitting"}
         >
           {state === "submitting" ? "Đang gửi..." : "Gửi ứng tuyển"}
@@ -121,13 +149,13 @@ export default function KocApplyFormClient() {
       </div>
 
       {state === "success" && (
-        <div className="sm:col-span-2 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white">
+        <div className="sm:col-span-2 rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4 text-sm text-white">
           ✅ Đã gửi thành công. Alfa Agent sẽ phản hồi sớm.
         </div>
       )}
 
       {state === "error" && (
-        <div className="sm:col-span-2 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white">
+        <div className="sm:col-span-2 rounded-2xl border border-red-400/20 bg-red-400/10 p-4 text-sm text-white">
           ❌ {err || "Có lỗi xảy ra."}
         </div>
       )}
@@ -140,11 +168,13 @@ function Field({
   name,
   placeholder,
   type = "text",
+  required = false,
 }: {
   label: string;
   name: string;
   placeholder: string;
   type?: string;
+  required?: boolean;
 }) {
   return (
     <div>
@@ -153,6 +183,7 @@ function Field({
         type={type}
         name={name}
         placeholder={placeholder}
+        required={required}
         className="mt-2 w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white outline-none placeholder:text-white/40 aa-focus"
       />
     </div>

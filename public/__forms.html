@@ -5,7 +5,13 @@
     <!-- Deploy-time detection only (Netlify Forms) -->
 
     <!-- 1) Brand brief -->
-    <form name="alfa-agent-brand-brief" data-netlify="true" hidden>
+    <form
+      name="alfa-agent-brand-brief"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
       <input type="hidden" name="form-name" value="alfa-agent-brand-brief" />
       <p>
         <label>
@@ -23,7 +29,13 @@
     </form>
 
     <!-- 2) Contact -->
-    <form name="alfa-media-contact" data-netlify="true" hidden>
+    <form
+      name="alfa-media-contact"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
       <input type="hidden" name="form-name" value="alfa-media-contact" />
       <p>
         <label>
@@ -36,6 +48,32 @@
       <input name="company" type="text" />
       <input name="subject" type="text" />
       <textarea name="message"></textarea>
+    </form>
+
+    <!-- 3) Join KOC -->
+    <form
+      name="alfa-agent-koc-apply"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="alfa-agent-koc-apply" />
+      <p>
+        <label>
+          Don’t fill this out: <input name="bot-field" />
+        </label>
+      </p>
+
+      <input name="name" type="text" />
+      <input name="email" type="email" />
+      <input name="phone" type="text" />
+      <input name="platform" type="text" />
+      <input name="channel" type="text" />
+      <input name="niche" type="text" />
+      <input name="followers" type="text" />
+      <input name="cadence" type="text" />
+      <textarea name="note"></textarea>
     </form>
   </body>
 </html>
