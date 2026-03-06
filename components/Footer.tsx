@@ -1,160 +1,211 @@
 import Link from "next/link";
 
+const companyLinks = [
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms of Service" },
+];
+
 const productLinks = [
+  { href: "/alfa-agent", label: "Alfa Agent" },
   { href: "/alfa-agent/for-brands", label: "For Brands" },
   { href: "/alfa-agent/solutions/build-and-run", label: "Build & Run" },
   { href: "/alfa-agent/join-koc", label: "Join KOC" },
 ];
 
-const legalLinks = [
-  { href: "/privacy", label: "Privacy Policy" },
-  { href: "/terms", label: "Terms" },
+const utilityLinks = [
+  { href: "/sitemap.xml", label: "Sitemap" },
+  { href: "/robots.txt", label: "Robots" },
 ];
 
-const companyLinks = [
-  { href: "/about", label: "About Alfa Media" },
-  { href: "/contact", label: "Contact" },
-];
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Alfa Media",
+  url: "https://alfamedia.vn",
+  logo: "https://alfamedia.vn/og.png",
+  description:
+    "Alfa Media là công ty xây hệ thống nội dung, tăng trưởng và vận hành sản phẩm số. Alfa Agent là một sản phẩm thuộc Alfa Media.",
+  email: "admin@alfamedia.vn",
+  brand: [
+    {
+      "@type": "Brand",
+      name: "Alfa Agent",
+      url: "https://alfamedia.vn/alfa-agent",
+    },
+  ],
+  sameAs: [],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Alfa Media",
+  url: "https://alfamedia.vn",
+  description:
+    "Website chính thức của Alfa Media. Alfa Agent là product thuộc Alfa Media.",
+  publisher: {
+    "@type": "Organization",
+    name: "Alfa Media",
+    url: "https://alfamedia.vn",
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://alfamedia.vn/?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-[rgb(var(--bg))]">
-      <div className="mx-auto max-w-6xl px-6 py-12">
-        <div className="grid gap-10 md:grid-cols-4">
-          {/* Brand line */}
-          <div className="space-y-3">
-            <div className="text-base font-semibold tracking-tight text-white">
-              Alfa Agent
-            </div>
-            <div className="text-sm text-white/60">Product of Alfa Media</div>
+    <>
+      <footer className="border-t border-white/10 bg-[rgb(var(--bg))]">
+        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14">
+          <div className="grid gap-10 md:grid-cols-[1.3fr_1fr_1fr_1fr]">
+            {/* Brand / company intro */}
+            <div className="space-y-4">
+              <div>
+                <div className="text-xl font-semibold tracking-tight text-white">
+                  Alfa Media
+                </div>
+                <div className="mt-1 text-sm text-white/55">
+                  Company • Content systems &amp; growth products
+                </div>
+              </div>
 
-            <div className="pt-3">
-              <Link
-                href="/alfa-agent"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[rgb(var(--primary-2))] hover:text-[rgb(var(--primary))] transition"
-              >
-                Open Alfa Agent <span className="text-white/30">→</span>
-              </Link>
-            </div>
+              <p className="max-w-md text-sm leading-relaxed text-white/65">
+                Alfa Media tập trung vào tư duy system-first: chuẩn hoá vận hành,
+                kiểm soát chất lượng và dùng dữ liệu để tối ưu vòng lặp.{" "}
+                <span className="text-white">Alfa Agent</span> là một sản phẩm thuộc
+                Alfa Media.
+              </p>
 
-            <div className="pt-2 text-xs text-white/45 leading-relaxed">
-              System-first KOC operation: SOP • Approval • KPI Tracking • Reporting
-              loop.
-            </div>
-          </div>
-
-          {/* Links */}
-          <div className="space-y-3">
-            <div className="text-xs uppercase tracking-wider text-white/45">
-              Links
-            </div>
-            <ul className="space-y-2 text-sm">
-              {productLinks.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-white/70 hover:text-white transition"
+              <div className="space-y-1 text-sm text-white/55">
+                <div>
+                  Email:{" "}
+                  <a
+                    href="mailto:admin@alfamedia.vn"
+                    className="text-white/80 transition hover:text-white"
                   >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div className="space-y-3">
-            <div className="text-xs uppercase tracking-wider text-white/45">
-              Legal
-            </div>
-            <ul className="space-y-2 text-sm">
-              {legalLinks.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-white/70 hover:text-white transition"
+                    admin@alfamedia.vn
+                  </a>
+                </div>
+                <div>
+                  Website:{" "}
+                  <a
+                    href="https://alfamedia.vn"
+                    className="text-white/80 transition hover:text-white"
                   >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div className="space-y-3">
-            <div className="text-xs uppercase tracking-wider text-white/45">
-              Contact
+                    alfamedia.vn
+                  </a>
+                </div>
+              </div>
             </div>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a
-                  href="mailto:admin@alfamedia.vn"
-                  className="text-white/70 hover:text-white transition"
-                >
-                  admin@alfamedia.vn
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.facebook.com/61587712543254"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-white/70 hover:text-white transition"
-                >
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.tiktok.com/@alfa_agent"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-white/70 hover:text-white transition"
-                >
-                  TikTok
-                </a>
-              </li>
-            </ul>
 
-            <div className="pt-4">
-              <div className="text-xs text-white/45">Company</div>
-              <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
-                {companyLinks.map((l) => (
-                  <Link
-                    key={l.href}
-                    href={l.href}
-                    className="text-white/70 hover:text-white transition"
+            {/* Company */}
+            <FooterColumn title="Company" links={companyLinks} />
+
+            {/* Product */}
+            <FooterColumn title="Product" links={productLinks} />
+
+            {/* Utility */}
+            <div className="space-y-4">
+              <div className="text-sm font-semibold uppercase tracking-wider text-white/40">
+                Utility
+              </div>
+
+              <div className="space-y-2">
+                {utilityLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="block text-sm text-white/65 transition hover:text-white"
                   >
-                    {l.label}
-                  </Link>
+                    {link.label}
+                  </a>
                 ))}
+              </div>
+
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                <div className="text-xs uppercase tracking-wider text-white/40">
+                  Philosophy
+                </div>
+                <div className="mt-2 text-lg font-semibold text-white">
+                  System-first
+                </div>
+                <div className="mt-2 text-sm leading-relaxed text-white/60">
+                  Chuẩn hoá trước, scale sau.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 border-t border-white/10 pt-5">
+            <div className="flex flex-col gap-3 text-sm text-white/50 sm:flex-row sm:items-center sm:justify-between">
+              <div>© {year} Alfa Media. All rights reserved.</div>
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <Link href="/privacy" className="transition hover:text-white/80">
+                  Privacy
+                </Link>
+                <Link href="/terms" className="transition hover:text-white/80">
+                  Terms
+                </Link>
+                <a href="/sitemap.xml" className="transition hover:text-white/80">
+                  Sitemap
+                </a>
+                <a href="/robots.txt" className="transition hover:text-white/80">
+                  Robots
+                </a>
               </div>
             </div>
           </div>
         </div>
+      </footer>
 
-        {/* Bottom bar */}
-        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-xs text-white/45">
-            © {year} Alfa Media. All rights reserved.
-          </div>
+      {/* SEO schema: Organization + WebSite */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(organizationSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteSchema),
+        }}
+      />
+    </>
+  );
+}
 
-          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-white/45">
-            <Link href="/privacy" className="hover:text-white transition">
-              Privacy
-            </Link>
-            <Link href="/terms" className="hover:text-white transition">
-              Terms
-            </Link>
-            <Link href="/contact" className="hover:text-white transition">
-              Contact
-            </Link>
-          </div>
-        </div>
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: Array<{ href: string; label: string }>;
+}) {
+  return (
+    <div className="space-y-4">
+      <div className="text-sm font-semibold uppercase tracking-wider text-white/40">
+        {title}
       </div>
-    </footer>
+
+      <div className="space-y-2">
+        {links.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="block text-sm text-white/65 transition hover:text-white"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 }
