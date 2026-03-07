@@ -30,7 +30,7 @@ export default function ContactFormClient() {
         body.append(key, String(value));
       });
 
-      const res = await fetch("/", {
+      const res = await fetch("/_forms.html", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -55,16 +55,14 @@ export default function ContactFormClient() {
       <form
         name="alfa-media-contact"
         method="POST"
-        action="/"
+        action="/_forms.html"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={onSubmit}
         className="grid gap-4 sm:grid-cols-2"
       >
-        {/* Netlify required */}
         <input type="hidden" name="form-name" value="alfa-media-contact" />
 
-        {/* Honeypot */}
         <p className="hidden">
           <label>
             Don’t fill this out: <input name="bot-field" />
