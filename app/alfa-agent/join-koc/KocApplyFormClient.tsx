@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
 export default function KocApplyFormClient() {
+  const router = useRouter();
   const [state, setState] = useState<FormState>("idle");
   const [err, setErr] = useState<string>("");
 
@@ -22,7 +24,7 @@ export default function KocApplyFormClient() {
     });
 
     try {
-      const res = await fetch("/", {
+      const res = await fetch("/__forms.html", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -36,6 +38,10 @@ export default function KocApplyFormClient() {
 
       setState("success");
       form.reset();
+
+      setTimeout(() => {
+        router.push("/alfa-agent/join-koc/thanks");
+      }, 300);
     } catch {
       setState("error");
       setErr("Gửi không thành công. Vui lòng thử lại sau hoặc reload trang.");
@@ -46,14 +52,14 @@ export default function KocApplyFormClient() {
     <form
       name="alfa-agent-koc-apply"
       method="POST"
-      action="/"
+      action="/__forms.html"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="mt-6 sm:mt-8 grid gap-4 sm:grid-cols-2"
       onSubmit={onSubmit}
     >
-      {/* Netlify required hidden fields */}
       <input type="hidden" name="form-name" value="alfa-agent-koc-apply" />
+
       <p className="hidden">
         <label>
           Don’t fill this out: <input name="bot-field" />
@@ -150,7 +156,7 @@ export default function KocApplyFormClient() {
 
       {state === "success" && (
         <div className="sm:col-span-2 rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4 text-sm text-white">
-          ✅ Đã gửi thành công. Alfa Agent sẽ phản hồi sớm.
+          ✅ Đã gửi thành công. Đang chuyển trang...
         </div>
       )}
 

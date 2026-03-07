@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -34,6 +35,7 @@ function encode(data: Record<string, string>) {
 }
 
 export default function BrandBriefFormClient() {
+  const router = useRouter();
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string>("");
   const [form, setForm] = useState<FormState>(initialState);
@@ -54,7 +56,7 @@ export default function BrandBriefFormClient() {
         ...form,
       };
 
-      const res = await fetch("/", {
+      const res = await fetch("/__forms.html", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -67,8 +69,12 @@ export default function BrandBriefFormClient() {
       }
 
       setStatus("success");
-      setMessage("Đã nhận brief. Alfa Agent sẽ phản hồi trong 48h.");
+      setMessage("Đã nhận brief. Đang chuyển trang...");
       setForm(initialState);
+
+      setTimeout(() => {
+        router.push("/alfa-agent/for-brands/thanks");
+      }, 300);
     } catch {
       setStatus("error");
       setMessage("Gửi thất bại. Vui lòng thử lại sau ít phút.");
@@ -84,14 +90,14 @@ export default function BrandBriefFormClient() {
       <form
         name="alfa-agent-brand-brief"
         method="POST"
-        action="/"
+        action="/__forms.html"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={onSubmit}
         className="grid gap-4 sm:grid-cols-2"
       >
-        {/* Netlify required */}
         <input type="hidden" name="form-name" value="alfa-agent-brand-brief" />
+
         <p className="hidden">
           <label>
             Don’t fill this out: <input name="bot-field" />

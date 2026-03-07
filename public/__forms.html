@@ -1,21 +1,31 @@
 <!doctype html>
-<html>
-  <head></head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify Forms Detection</title>
+    <meta name="robots" content="noindex,nofollow" />
+  </head>
   <body>
-    <!-- Deploy-time detection only (Netlify Forms) -->
+    <!--
+      This file exists only so Netlify can detect forms at deploy time.
+      It should remain static and include every field name used by JS-rendered forms.
+    -->
 
-    <!-- 1) Brand brief -->
+    <!-- 1) Brand Brief -->
     <form
       name="alfa-agent-brand-brief"
       method="POST"
+      action="/__forms.html"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       hidden
     >
       <input type="hidden" name="form-name" value="alfa-agent-brand-brief" />
-      <p>
+
+      <p hidden>
         <label>
-          Don’t fill this out: <input name="bot-field" />
+          Don’t fill this out:
+          <input name="bot-field" type="text" />
         </label>
       </p>
 
@@ -32,14 +42,17 @@
     <form
       name="alfa-media-contact"
       method="POST"
+      action="/__forms.html"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       hidden
     >
       <input type="hidden" name="form-name" value="alfa-media-contact" />
-      <p>
+
+      <p hidden>
         <label>
-          Don’t fill this out: <input name="bot-field" />
+          Don’t fill this out:
+          <input name="bot-field" type="text" />
         </label>
       </p>
 
@@ -54,14 +67,17 @@
     <form
       name="alfa-agent-koc-apply"
       method="POST"
+      action="/__forms.html"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       hidden
     >
       <input type="hidden" name="form-name" value="alfa-agent-koc-apply" />
-      <p>
+
+      <p hidden>
         <label>
-          Don’t fill this out: <input name="bot-field" />
+          Don’t fill this out:
+          <input name="bot-field" type="text" />
         </label>
       </p>
 

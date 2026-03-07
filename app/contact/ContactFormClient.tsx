@@ -1,10 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
 
 export default function ContactFormClient() {
+  const router = useRouter();
   const [state, setState] = useState<SubmitState>("idle");
   const [errorMsg, setErrorMsg] = useState<string>("");
 
@@ -44,6 +46,11 @@ export default function ContactFormClient() {
 
       setState("success");
       form.reset();
+
+      // Redirect nhẹ sau khi submit thành công
+      setTimeout(() => {
+        router.push("/contact/thanks");
+      }, 300);
     } catch {
       setState("error");
       setErrorMsg("Gửi không thành công. Vui lòng thử lại sau ít phút.");
@@ -61,8 +68,10 @@ export default function ContactFormClient() {
         onSubmit={onSubmit}
         className="grid gap-4 sm:grid-cols-2"
       >
+        {/* Netlify required */}
         <input type="hidden" name="form-name" value="alfa-media-contact" />
 
+        {/* Honeypot */}
         <p className="hidden">
           <label>
             Don’t fill this out: <input name="bot-field" />
@@ -114,7 +123,7 @@ export default function ContactFormClient() {
           <div className="text-xs text-white/55">
             {state === "success" ? (
               <span className="text-[rgb(var(--primary-2))]">
-                Đã nhận thông tin. Alfa Media sẽ phản hồi sớm.
+                Đã nhận thông tin. Đang chuyển trang...
               </span>
             ) : state === "error" ? (
               <span className="text-red-300">
