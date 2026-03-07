@@ -30,7 +30,7 @@ export default function ContactFormClient() {
         body.append(key, String(value));
       });
 
-      const res = await fetch("/", {
+      const res = await fetch("/__forms.html", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -55,7 +55,7 @@ export default function ContactFormClient() {
       <form
         name="alfa-media-contact"
         method="POST"
-        action="/"
+        action="/__forms.html"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={onSubmit}
