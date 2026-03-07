@@ -22,7 +22,7 @@ export default function KocApplyFormClient() {
     });
 
     try {
-      const res = await fetch("/alfa-agent/join-koc", {
+      const res = await fetch("/", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
@@ -46,7 +46,7 @@ export default function KocApplyFormClient() {
     <form
       name="alfa-agent-koc-apply"
       method="POST"
-      action="/alfa-agent/join-koc"
+      action="/"
       data-netlify="true"
       data-netlify-honeypot="bot-field"
       className="mt-6 sm:mt-8 grid gap-4 sm:grid-cols-2"
@@ -141,7 +141,7 @@ export default function KocApplyFormClient() {
 
         <button
           type="submit"
-          className="aa-btn-primary aa-focus w-full text-center sm:w-auto disabled:cursor-not-allowed disabled:opacity-70"
+          className="aa-btn-primary aa-focus w-full text-center disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
           disabled={state === "submitting"}
         >
           {state === "submitting" ? "Đang gửi..." : "Gửi ứng tuyển"}

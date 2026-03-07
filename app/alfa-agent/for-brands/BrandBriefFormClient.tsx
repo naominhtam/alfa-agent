@@ -54,9 +54,11 @@ export default function BrandBriefFormClient() {
         ...form,
       };
 
-      const res = await fetch("/alfa-agent/for-brands", {
+      const res = await fetch("/", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
         body: encode(payload),
       });
 
@@ -69,7 +71,7 @@ export default function BrandBriefFormClient() {
       setForm(initialState);
     } catch {
       setStatus("error");
-      setMessage("Gửi thất bại. Anh thử lại giúp em sau ít phút.");
+      setMessage("Gửi thất bại. Vui lòng thử lại sau ít phút.");
     }
   }
 
@@ -82,7 +84,7 @@ export default function BrandBriefFormClient() {
       <form
         name="alfa-agent-brand-brief"
         method="POST"
-        action="/alfa-agent/for-brands"
+        action="/"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
         onSubmit={onSubmit}
